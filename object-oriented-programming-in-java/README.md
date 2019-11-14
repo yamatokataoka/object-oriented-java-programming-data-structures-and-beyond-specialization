@@ -15,3 +15,7 @@ This course is the first course on [Object Oriented Java Programming: Data Struc
 1. Use searching and sorting to design algorithms for analyzing data.
 1. Search for an element in a sorted and unsorted list and explain the differences.
 1. Explain multiple sorting techniques and performance tradeoffs.
+
+# Project Description
+An interactive GUI module using Processing (https://processing.org/) and UnfoldingMaps (http://unfoldingmaps.org/).
+Data visualization for Earthquakes and major cities in the world with live Earthquake data feed from http://earthquake.usgs.gov/.
