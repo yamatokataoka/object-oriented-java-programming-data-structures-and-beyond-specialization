@@ -32,6 +32,7 @@ public class LifeExpectancy extends PApplet {
 		countryMarkers = MapUtils.createSimpleMarkers(countriesFeatures);
 		
 		map.addMarkers(countryMarkers);
+		shadeCountries();
 	}
 
 	public void draw() {
@@ -50,5 +51,21 @@ public class LifeExpectancy extends PApplet {
 		}
 		
 		return LifeExpectancyMap;
+	}
+	
+	private void shadeCountries() {
+		
+		for (Marker marker : countryMarkers) {
+			String countryId = marker.getId();
+			if (LifeExpectancyMap.containsKey(countryId)) {
+				float lifeExp = LifeExpectancyMap.get(countryId);
+				// Encode value as brightness (values range: 40-90)
+				int colorLevel = (int) map(lifeExp, 40, 90, 10, 255);
+				marker.setColor(color(255-colorLevel, 100, colorLevel));
+			}
+			else {
+				marker.setColor(color(150,150,150));
+			}
+		}
 	}
 }
