@@ -1,9 +1,13 @@
 package module3;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.fhpotsdam.unfolding.UnfoldingMap;
+import de.fhpotsdam.unfolding.data.Feature;
+import de.fhpotsdam.unfolding.data.GeoJSONReader;
+import de.fhpotsdam.unfolding.marker.Marker;
 import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import processing.core.*;
@@ -13,6 +17,9 @@ public class LifeExpectancy extends PApplet {
 	UnfoldingMap map;
 	
 	Map<String, Float> LifeExpectancyMap;
+	
+	List<Feature> countriesFeatures;
+	List<Marker> countryMarkers;
 
 	public void setup() {
 		size(800, 600, OPENGL);
@@ -20,6 +27,11 @@ public class LifeExpectancy extends PApplet {
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
 		LifeExpectancyMap = loadLifeExpectancyGromCSV("LifeExpectancyWorldBankModule3.csv");
+		
+		countriesFeatures = GeoJSONReader.loadData(this, "countries.geo.json");
+		countryMarkers = MapUtils.createSimpleMarkers(countriesFeatures);
+		
+		map.addMarkers(countryMarkers);
 	}
 
 	public void draw() {
