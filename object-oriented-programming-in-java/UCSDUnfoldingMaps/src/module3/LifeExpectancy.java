@@ -26,6 +26,10 @@ public class LifeExpectancy extends PApplet {
 		map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
 		MapUtils.createDefaultEventDispatcher(this, map);
 		
+		background(150);
+		
+		map.zoomLevel(2);
+		
 		LifeExpectancyMap = loadLifeExpectancyGromCSV("LifeExpectancyWorldBankModule3.csv");
 		
 		countriesFeatures = GeoJSONReader.loadData(this, "countries.geo.json");
