@@ -12,6 +12,11 @@ import de.fhpotsdam.unfolding.providers.Google;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import processing.core.*;
 
+/** EarthquakeCityMap
+ * An application with an interactive map displaying life expectancy data.
+ * @author yamatokataoka
+ * Date: November 16th, 2019
+ * */
 public class LifeExpectancy extends PApplet {
 
 	UnfoldingMap map;
