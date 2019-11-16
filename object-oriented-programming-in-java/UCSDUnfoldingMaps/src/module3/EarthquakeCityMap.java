@@ -77,7 +77,10 @@ public class EarthquakeCityMap extends PApplet {
 	    // to create a new SimplePointMarker for each PointFeature in 
 	    // earthquakes.  Then add each new SimplePointMarker to the 
 	    // List markers (so that it will be added to the map in the line below)
-	    
+	    for (PointFeature feature : earthquakes) {
+	    	Marker marker = createMarker(feature);
+	    	markers.add(marker);
+	    }
 	    
 	    // Add the markers to the map so that they are displayed
 	    map.addMarkers(markers);
