@@ -109,8 +109,10 @@ public class EarthquakeCityMap extends PApplet {
 		float mag = Float.parseFloat(magObj.toString());
 		
 		// Here is an example of how to use Processing's color method to generate 
-	    // an int that represents the color yellow.  
+	    // an int that represents the color yellow.
+	    int blue = color(0, 0, 255);
 	    int yellow = color(255, 255, 0);
+	    int red = color(255, 0, 0);
 		
 		// TODO (Step 4): Add code below to style the marker's size and color 
 	    // according to the magnitude of the earthquake.  
@@ -119,7 +121,16 @@ public class EarthquakeCityMap extends PApplet {
 	    // Rather than comparing the magnitude to a number directly, compare 
 	    // the magnitude to these variables (and change their value in the code 
 	    // above if you want to change what you mean by "moderate" and "light")
-	    
+	    if (mag < THRESHOLD_LIGHT) {
+	    	marker.setColor(blue);
+	    	marker.setRadius(5);
+	    } else if (mag < THRESHOLD_MODERATE) {
+	    	marker.setColor(yellow);
+	    	marker.setRadius(10);
+	    } else {
+	    	marker.setColor(red);
+	    	marker.setRadius(15);
+	    }
 	    
 	    // Finally return the marker
 	    return marker;
