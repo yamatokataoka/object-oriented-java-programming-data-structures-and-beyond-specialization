@@ -212,7 +212,7 @@ public class EarthquakeCityMap extends PApplet {
 		//  * If you know your Marker, m, is a LandQuakeMarker, then it has a "country" 
 		//      property set.  You can get the country with:
 		//        String country = (String)m.getProperty("country");
-		int numOceanQuakes = 0;
+		int numOceanQuakes = quakeMarkers.size();
 		for (Marker cm : countryMarkers) {
 			int quakeCounter = 0;
 			String name = (String)cm.getProperty("name");
@@ -222,11 +222,10 @@ public class EarthquakeCityMap extends PApplet {
 					if (country.equals(name)) {
 						quakeCounter++;
 					}
-				} else {
-					numOceanQuakes++;
 				}
 			}
 			if (quakeCounter > 0) {
+				numOceanQuakes -= quakeCounter;
 				System.out.println(name +": " + quakeCounter);
 			}
 		}
