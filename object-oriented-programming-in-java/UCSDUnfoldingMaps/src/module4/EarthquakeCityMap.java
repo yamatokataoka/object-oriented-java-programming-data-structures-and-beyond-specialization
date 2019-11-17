@@ -62,7 +62,7 @@ public class EarthquakeCityMap extends PApplet {
 	
 	public void setup() {		
 		// (1) Initializing canvas and map tiles
-		// size(900, 700, OPENGL);
+		size(900, 700, OPENGL);
 		if (offline) {
 		    map = new UnfoldingMap(this, 200, 50, 650, 600, new MBTilesMapProvider(mbTilesString));
 		    earthquakesURL = "2.5_week.atom";  // The same feed, but saved August 7, 2015
@@ -212,24 +212,24 @@ public class EarthquakeCityMap extends PApplet {
 		//  * If you know your Marker, m, is a LandQuakeMarker, then it has a "country" 
 		//      property set.  You can get the country with:
 		//        String country = (String)m.getProperty("country");
-		int numOceanQuakes = quakeMarkers.size();
-		for (Marker cm : countryMarkers) {
-			int quakeCounter = 0;
-			String name = (String)cm.getProperty("name");
-			for (Marker qm : quakeMarkers) {
-				if (((EarthquakeMarker)qm).isOnLand()) {
-					String country = (String)qm.getProperty("country");
-					if (country.equals(name)) {
-						quakeCounter++;
-					}
-				}
-			}
-			if (quakeCounter > 0) {
-				numOceanQuakes -= quakeCounter;
-				System.out.println(name +": " + quakeCounter);
-			}
-		}
-		System.out.println("OCEAN QUAKES: " + numOceanQuakes);
+		//		int numOceanQuakes = quakeMarkers.size();
+		//		for (Marker cm : countryMarkers) {
+		//			int quakeCounter = 0;
+		//			String name = (String)cm.getProperty("name");
+		//			for (Marker qm : quakeMarkers) {
+		//				if (((EarthquakeMarker)qm).isOnLand()) {
+		//					String country = (String)qm.getProperty("country");
+		//					if (country.equals(name)) {
+		//						quakeCounter++;
+		//					}
+		//				}
+		//			}
+		//			if (quakeCounter > 0) {
+		//				numOceanQuakes -= quakeCounter;
+		//				System.out.println(name +": " + quakeCounter);
+		//			}
+		//		}
+		//		System.out.println("OCEAN QUAKES: " + numOceanQuakes);
 		
 	}
 	

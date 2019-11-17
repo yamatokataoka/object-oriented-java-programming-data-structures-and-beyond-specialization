@@ -46,7 +46,6 @@ public class CityMarker extends SimplePointMarker {
 		// whose upper left corner is at position x, y
 		// Check out the processing documentation for more methods
 		
-		
 		// Restore previous drawing style
 		pg.popStyle();
 	}
