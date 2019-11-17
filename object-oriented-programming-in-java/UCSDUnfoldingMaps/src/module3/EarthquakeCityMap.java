@@ -51,14 +51,14 @@ public class EarthquakeCityMap extends PApplet {
 
 	
 	public void setup() {
-		size(950, 600, OPENGL);
+		size(700, 500, OPENGL);
 
 		if (offline) {
 		    map = new UnfoldingMap(this, 200, 50, 700, 500, new MBTilesMapProvider(mbTilesString));
 		    earthquakesURL = "2.5_week.atom"; 	// Same feed, saved Aug 7, 2015, for working offline
 		}
 		else {
-			map = new UnfoldingMap(this, 200, 50, 700, 500, new Google.GoogleMapProvider());
+			map = new UnfoldingMap(this, 0, 0, 700, 500, new Google.GoogleMapProvider());
 			// IF YOU WANT TO TEST WITH A LOCAL FILE, uncomment the next line
 			//earthquakesURL = "2.5_week.atom";
 		}
@@ -145,9 +145,23 @@ public class EarthquakeCityMap extends PApplet {
 
 	// helper method to draw key in GUI
 	// TODO: Implement this method to draw the key
-	private void addKey() 
-	{	
+	private void addKey() {	
 		// Remember you can use Processing's graphics methods here
-	
+		fill(255);
+		rect(30, 20, 150, 160);
+		textSize(12);
+		fill(0, 0, 0);
+		textAlign(CENTER);
+		text("the Earthquakes", 105, 40);
+		textAlign(LEFT);
+		text("5.0+ Magnitude", 70, 70);
+		text("4.0+ Magnitude", 70, 100);
+		text("Below 4.0", 70, 130);
+		fill(255, 0, 0);
+		ellipse(43, 63, 15, 15);
+		fill(255, 255, 0);
+		ellipse(45, 95, 10, 10);
+		fill(0, 0, 255);
+		ellipse(48, 128, 5, 5);
 	}
 }
