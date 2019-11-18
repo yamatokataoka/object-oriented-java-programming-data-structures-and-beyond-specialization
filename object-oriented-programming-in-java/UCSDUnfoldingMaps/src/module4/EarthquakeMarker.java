@@ -1,8 +1,10 @@
 package module4;
 
 import de.fhpotsdam.unfolding.data.PointFeature;
+
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import processing.core.PGraphics;
+import processing.core.PApplet;
 
 /** Implements a visual marker for earthquakes on an earthquake map
  * 
@@ -81,6 +83,10 @@ public abstract class EarthquakeMarker extends SimplePointMarker
 	// You might find the getters below helpful.
 	private void colorDetermine(PGraphics pg) {
 		//TODO: Implement this method
+		PApplet papplet = new PApplet();
+		float depth = getDepth();
+		int colorLevel = (int) papplet.map(depth, 0, 500, 10, 255);
+		pg.fill(255-colorLevel, 100, colorLevel);
 	}
 	
 	
