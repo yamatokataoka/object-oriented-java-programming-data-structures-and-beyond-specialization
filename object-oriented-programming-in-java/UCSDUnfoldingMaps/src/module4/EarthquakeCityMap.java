@@ -156,7 +156,7 @@ public class EarthquakeCityMap extends PApplet {
 		text("Land Quake", 75, 150);
 		text("Ocean Quake", 75, 175);
 		text("Size ~ Magnitude", 50, 200);
-		text("Color ~ Depth", 50, 225);
+		text("Depth: Shallow ~ Deep", 30, 225);
 		text("~", 85, 250);
 	}
 
