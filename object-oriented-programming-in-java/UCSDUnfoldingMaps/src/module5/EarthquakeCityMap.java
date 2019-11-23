@@ -162,9 +162,47 @@ public class EarthquakeCityMap extends PApplet {
 	@Override
 	public void mouseClicked()
 	{
-		// TODO: Implement this method
-		// Hint: You probably want a helper method or two to keep this code
-		// from getting too long/disorganized
+		// clear the last selection
+		if (lastClicked != null) {
+			unhideMarkers();
+			lastClicked = null;
+		
+		} else {
+			selectMarkerIfClicked(quakeMarkers);
+			selectMarkerIfClicked(cityMarkers);
+			if (lastClicked != null) {
+				hideWithinThreat(quakeMarkers);
+				hideWithinThreat(cityMarkers);
+				lastClicked.setHidden(false);
+			}
+		}
+	}
+	
+	private void selectMarkerIfClicked(List<Marker> markers) {
+		for (Marker m : markers) {
+			if (m.isInside(map, pmouseX, pmouseY) && lastClicked == null) {
+				((CommonMarker) m).setClicked(true);
+				lastClicked = (CommonMarker) m;
+				break;
+			}
+		}
+	}
+	
+	private void hideWithinThreat (List<Marker> markers) {
+		for (Marker m : markers) {
+			m.setHidden(true);
+			if (lastClicked instanceof EarthquakeMarker && m instanceof CityMarker) {
+				double threatCircle = ((EarthquakeMarker) lastClicked).threatCircle();
+				if (m.getLocation().getDistance(lastClicked.getLocation()) <= threatCircle) {
+					m.setHidden(false);
+				}
+			} else if (lastClicked instanceof CityMarker && m instanceof EarthquakeMarker) {
+				double threatCircle = ((EarthquakeMarker) m).threatCircle();
+				if (m.getLocation().getDistance(lastClicked.getLocation()) <= threatCircle) {
+					m.setHidden(false);
+				}
+			}
+		}
 	}
 	
 	
