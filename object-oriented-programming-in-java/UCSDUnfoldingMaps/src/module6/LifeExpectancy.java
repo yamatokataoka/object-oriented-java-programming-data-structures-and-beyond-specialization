@@ -34,8 +34,8 @@ public class LifeExpectancy extends PApplet {
 	private Marker lastSelected;
 
 	public void setup() {
-		size(800, 600, OPENGL);
-		map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
+		size(500, 500, OPENGL);
+		map = new UnfoldingMap(this, 0, 0, 500, 500, new Google.GoogleMapProvider());
 		MapUtils.createDefaultEventDispatcher(this, map);
 
 		// Load lifeExpectancy data
