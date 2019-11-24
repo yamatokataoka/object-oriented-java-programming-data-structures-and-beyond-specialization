@@ -13,7 +13,9 @@ import de.fhpotsdam.unfolding.data.GeoJSONReader;
 
 import java.util.HashMap;
 
+import de.fhpotsdam.unfolding.marker.AbstractMarker;
 import de.fhpotsdam.unfolding.marker.Marker;
+import de.fhpotsdam.unfolding.marker.MultiMarker;
 
 /**
  * Visualizes life expectancy in different countries. 
@@ -53,6 +55,9 @@ public class LifeExpectancy extends PApplet {
 	public void draw() {
 		// Draw map tiles and country markers
 		map.draw();
+		if (lastSelected != null) {
+			setHighlightColor(color(255, 255, 255));
+		}
 	}
 
 	//Helper method to color each country based on life expectancy
@@ -103,6 +108,17 @@ public class LifeExpectancy extends PApplet {
 				marker.setSelected(true);
 				return;
 			}
+		}
+	}
+	
+	private void setHighlightColor(int color) {
+		if (lastSelected instanceof MultiMarker) {
+			List<Marker> markers = ((MultiMarker) lastSelected).getMarkers();
+			for (Marker marker : markers) {
+				((AbstractMarker) marker).setHighlightColor(color);
+			}
+		} else {
+			((AbstractMarker) lastSelected).setHighlightColor(color);
 		}
 	}
 }
