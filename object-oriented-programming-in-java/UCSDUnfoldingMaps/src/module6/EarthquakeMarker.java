@@ -58,7 +58,7 @@ implements Comparable<EarthquakeMarker>
 	
 	// TODO: Add the method:
 	public int compareTo(EarthquakeMarker marker) {
-		return (int) (this.getMagnitude() - marker.getMagnitude());
+		return (int) (this.getMagnitude()*100 - marker.getMagnitude()*100);
 	}
 	
 	
