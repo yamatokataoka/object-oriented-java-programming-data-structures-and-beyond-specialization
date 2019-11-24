@@ -57,6 +57,7 @@ public class LifeExpectancy extends PApplet {
 		map.draw();
 		if (lastSelected != null) {
 			setHighlightColor(color(255, 255, 255));
+			showTitle();
 		}
 	}
 
@@ -120,5 +121,25 @@ public class LifeExpectancy extends PApplet {
 		} else {
 			((AbstractMarker) lastSelected).setHighlightColor(color);
 		}
+	}
+	
+	private void showTitle() {
+		String title = (String) lastSelected.getProperty("name");
+		String countryId = lastSelected.getId();
+		if (lifeExpMap.containsKey(countryId)) {
+			float lifeExp = lifeExpMap.get(countryId);
+			title += " " + lifeExp;
+		}
+		fill(255, 250, 240);
+		
+		int xbase = 25;
+		int ybase = 50;
+		
+		rect(xbase, ybase + 15, textWidth(title) +6, 18, 5);
+		
+		fill(0);
+		textAlign(LEFT, CENTER);
+		textSize(12);
+		text(title, xbase+3, ybase+22);
 	}
 }
