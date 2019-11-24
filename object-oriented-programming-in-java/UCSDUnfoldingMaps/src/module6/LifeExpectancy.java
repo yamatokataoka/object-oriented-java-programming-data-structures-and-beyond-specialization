@@ -13,7 +13,6 @@ import de.fhpotsdam.unfolding.data.GeoJSONReader;
 
 import java.util.HashMap;
 
-
 import de.fhpotsdam.unfolding.marker.Marker;
 
 /**
@@ -29,6 +28,8 @@ public class LifeExpectancy extends PApplet {
 	HashMap<String, Float> lifeExpMap;
 	List<Feature> countries;
 	List<Marker> countryMarkers;
+	
+	private Marker lastSelected;
 
 	public void setup() {
 		size(800, 600, OPENGL);
@@ -43,7 +44,7 @@ public class LifeExpectancy extends PApplet {
 		countries = GeoJSONReader.loadData(this, "countries.geo.json");
 		countryMarkers = MapUtils.createSimpleMarkers(countries);
 		map.addMarkers(countryMarkers);
-		System.out.println(countryMarkers.get(0).getId());
+		System.out.println(countryMarkers.get(0).getProperties());
 		
 		// Country markers are shaded according to life expectancy (only once)
 		shadeCountries();
@@ -61,7 +62,7 @@ public class LifeExpectancy extends PApplet {
 		for (Marker marker : countryMarkers) {
 			// Find data for country of the current marker
 			String countryId = marker.getId();
-			System.out.println(lifeExpMap.containsKey(countryId));
+			// System.out.println(lifeExpMap.containsKey(countryId));
 			if (lifeExpMap.containsKey(countryId)) {
 				float lifeExp = lifeExpMap.get(countryId);
 				// Encode value as brightness (values range: 40-90)
@@ -73,6 +74,35 @@ public class LifeExpectancy extends PApplet {
 			}
 		}
 	}
+	
+	@Override
+	public void mouseMoved()
+	{
+		// clear the last selection
+		if (lastSelected != null) {
+			lastSelected.setSelected(false);
+			lastSelected = null;
+		
+		}
+		selectMarkerIfHover(countryMarkers);
+		//loop();
+	}
 
-
+	// If there is a marker selected 
+	private void selectMarkerIfHover(List<Marker> markers)
+	{
+		// Abort if there's already a marker selected
+		if (lastSelected != null) {
+			return;
+		}
+		
+		for (Marker marker : markers) 
+		{
+			if (marker.isInside(map,  mouseX, mouseY)) {
+				lastSelected = marker;
+				marker.setSelected(true);
+				return;
+			}
+		}
+	}
 }
