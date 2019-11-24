@@ -56,7 +56,7 @@ public class LifeExpectancy extends PApplet {
 		// Draw map tiles and country markers
 		map.draw();
 		if (lastSelected != null) {
-			setHighlightColor(color(255, 255, 255));
+			setHighlightColor(color(237, 225, 59));
 			showTitle();
 		}
 	}
