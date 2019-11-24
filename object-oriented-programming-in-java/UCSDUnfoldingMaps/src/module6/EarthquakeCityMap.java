@@ -2,6 +2,7 @@ package module6;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import de.fhpotsdam.unfolding.UnfoldingMap;
@@ -124,7 +125,7 @@ public class EarthquakeCityMap extends PApplet {
 	    map.addMarkers(quakeMarkers);
 	    map.addMarkers(cityMarkers);
 	    
-	    
+	    sortAndPrint(20);
 	}  // End setup
 	
 	
@@ -137,7 +138,16 @@ public class EarthquakeCityMap extends PApplet {
 	
 	
 	// TODO: Add the method:
-	//   private void sortAndPrint(int numToPrint)
+	private void sortAndPrint(int numToPrint) {
+		Marker[] markers = quakeMarkers.toArray(new Marker[quakeMarkers.size()]);
+		Arrays.sort(markers, Collections.reverseOrder());
+		if (numToPrint > markers.length) {
+			numToPrint = markers.length;
+		}
+		for (int k=0; k < numToPrint; k++) {
+			System.out.println(((EarthquakeMarker) markers[k]).getTitle());
+		}
+	}
 	// and then call that method from setUp
 	
 	/** Event handler that gets called automatically when the 
