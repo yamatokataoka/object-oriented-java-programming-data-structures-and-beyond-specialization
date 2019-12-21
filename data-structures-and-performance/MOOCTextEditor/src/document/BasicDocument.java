@@ -1,5 +1,6 @@
 package document;
 
+import java.util.Arrays;
 import java.util.List;
 
 /** 
@@ -75,10 +76,12 @@ public class BasicDocument extends Document
 	public int getNumSyllables()
 	{
 	    int totalNumSyllables = 0;
-	    String[] textArray = getText().split("\\s+");
+	    List<String> textArray = getTokens("[a-zA-Z]+");
+	    // System.out.println(Arrays.asList(textArray));
 	    for (String word : textArray) {
 	        totalNumSyllables += countSyllables(word);
 	    }
+	    // System.out.println(totalNumSyllables);
 	    return totalNumSyllables;
 	}
 	
