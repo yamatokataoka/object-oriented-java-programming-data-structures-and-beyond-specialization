@@ -45,15 +45,16 @@ public class EfficientDocument extends Document {
      */
 	private void processText()
 	{
-		// Call getTokens on the text to preserve separate strings that are 
-		// either words or sentence-ending punctuation.  Ignore everything
-		// That is not a word or a sentence-ending puctuation.
-		// MAKE SURE YOU UNDERSTAND THIS LINE BEFORE YOU CODE THE REST
-		// OF THIS METHOD.
 		List<String> tokens = getTokens("[!?.]+|[a-zA-Z]+");
-		
-		// TODO: Finish this method.  Remember the countSyllables method from 
-		// Document.  That will come in handy here.  isWord defined above will also help.
+
+		for (int k=0; k<tokens.size(); k++) {
+		    if (isWord(tokens.get(k))) {
+		        numWords++;
+		        numSyllables += countSyllables(tokens.get(k));
+		    } else {
+		        numSentences++;
+		    }
+		}
 	}
 
 	
