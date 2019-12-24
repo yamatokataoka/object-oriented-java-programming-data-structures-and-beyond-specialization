@@ -73,7 +73,7 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumSentences() {
-		return numWords;
+		return numSentences;
 	}
 
 	
@@ -93,7 +93,7 @@ public class EfficientDocument extends Document {
 	 */
 	@Override
 	public int getNumWords() {
-	    return numSentences;
+	    return numWords;
 	}
 
 
