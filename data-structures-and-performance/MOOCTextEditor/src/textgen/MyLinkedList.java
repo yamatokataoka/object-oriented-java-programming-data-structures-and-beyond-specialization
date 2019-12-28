@@ -16,7 +16,9 @@ public class MyLinkedList<E> extends AbstractList<E> {
 
 	/** Create a new empty LinkedList */
 	public MyLinkedList() {
-		// TODO: Implement this method
+		head = null;
+		tail = null;
+		size = 0;
 	}
 
 	/**
