@@ -34,9 +34,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		}
 
 		LLNode<E> addition = new LLNode<E>(element);
+
+		addition.next = tail;
+		addition.prev = tail.prev;
 		tail.prev.next = addition;
-        addition.prev = tail.prev;
-        addition.next = tail;
 		tail.prev = addition;
 
 		size++;
