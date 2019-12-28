@@ -55,7 +55,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	        throw new IndexOutOfBoundsException();
 	    }
 
-		for (int k=0; k<size; k++) {
+		for (int k=0; k<=index; k++) {
 		    current = current.next;
 		}
 
