@@ -19,6 +19,8 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	    head = new LLNode<E>(null);
         tail = new LLNode<E>(null);
         size = 0;
+        head.next = tail;
+        tail.prev = head;
 	}
 
 	/**
