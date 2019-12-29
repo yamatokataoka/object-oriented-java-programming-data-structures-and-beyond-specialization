@@ -33,12 +33,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		    throw new NullPointerException();
 		}
 
-		LLNode<E> addition = new LLNode<E>(element);
-
-		addition.next = tail;
-		addition.prev = tail.prev;
-		tail.prev.next = addition;
-		tail.prev = addition;
+		new LLNode<E>(element, tail);
 
 		size++;
 
