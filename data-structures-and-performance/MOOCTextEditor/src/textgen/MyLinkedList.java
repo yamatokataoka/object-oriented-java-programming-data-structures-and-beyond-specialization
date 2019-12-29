@@ -69,7 +69,15 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 */
 	public void add(int index, E element ) 
 	{
-		// TODO: Implement this method
+	    if (element == null) {
+            throw new NullPointerException();
+        }
+
+	    if (index >= size || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        size++;
 	}
 
 
