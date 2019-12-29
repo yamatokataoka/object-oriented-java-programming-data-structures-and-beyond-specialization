@@ -109,6 +109,11 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		System.out.println(textString);
 		gen.train(textString);
 		System.out.println(gen);
+		gen = new MarkovTextGeneratorLoL(new Random(42));
+		String shortText = "hi there hi Leo";
+		System.out.println(shortText);
+		gen.train(shortText);
+		System.out.println(gen);
 		System.out.println(gen.generateText(20));
 		String textString2 = "You say yes, I say no, "+
 				"You say stop, and I say go, go, go, "+
