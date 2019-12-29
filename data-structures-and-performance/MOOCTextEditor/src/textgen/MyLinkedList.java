@@ -129,4 +129,12 @@ class LLNode<E>
 		this.next = null;
 	}
 
+	public LLNode(E e,LLNode<E> prevNode) 
+    {
+	    this(e);
+	    this.next = prevNode.next;
+	    this.prev = prevNode;
+	    prevNode.next.prev = this;
+	    prevNode.next = this;
+    }
 }
