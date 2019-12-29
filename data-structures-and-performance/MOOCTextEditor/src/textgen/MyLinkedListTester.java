@@ -196,8 +196,26 @@ public class MyLinkedListTester {
 	@Test
 	public void testSet()
 	{
-	    // TODO: implement this test
-	    
+	    int a = list1.set(1, 99);
+	    assertEquals("testSet: check a is correct ", (int)99, a);
+        assertEquals("testSet: check element 1 is correct ", (Integer)99, list1.get(1));
+        assertEquals("testSet: check size is correct ", (int)3, list1.size());
+
+        try {
+            list1.set(0, null);
+            fail("testSet: Check NullPointerException");
+        }
+        catch (NullPointerException e) {
+
+        }
+
+        try {
+            emptyList.set(10, 2);
+            fail("testSet: check IndexOutOfBoundsException");
+        }
+        catch (IndexOutOfBoundsException e) {
+
+        }
 	}
 	
 	
