@@ -22,7 +22,7 @@ public class MyLinkedListTester {
 	MyLinkedList<Integer> emptyList;
 	MyLinkedList<Integer> longerList;
 	MyLinkedList<Integer> list1;
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -42,7 +42,7 @@ public class MyLinkedListTester {
 		list1.add(65);
 		list1.add(21);
 		list1.add(42);
-		
+
 	}
 
 	
@@ -59,39 +59,39 @@ public class MyLinkedListTester {
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-			
+
 		}
-		
+
 		// test short list, first contents, then out of bounds
 		assertEquals("Check first", "A", shortList.get(0));
 		assertEquals("Check second", "B", shortList.get(1));
-		
+
 		try {
 			shortList.get(-1);
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-		
+
 		}
 		try {
 			shortList.get(2);
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-		
+
 		}
 		// test longer list contents
 		for(int i = 0; i<LONG_LIST_LENGTH; i++ ) {
 			assertEquals("Check "+i+ " element", (Integer)i, longerList.get(i));
 		}
-		
+
 		// test off the end of the longer array
 		try {
 			longerList.get(-1);
 			fail("Check out of bounds");
 		}
 		catch (IndexOutOfBoundsException e) {
-		
+
 		}
 		try {
 			longerList.get(LONG_LIST_LENGTH);
@@ -99,7 +99,7 @@ public class MyLinkedListTester {
 		}
 		catch (IndexOutOfBoundsException e) {
 		}
-		
+
 	}
 	
 	
@@ -113,7 +113,7 @@ public class MyLinkedListTester {
 		assertEquals("Remove: check a is correct ", 65, a);
 		assertEquals("Remove: check element 0 is correct ", (Integer)21, list1.get(0));
 		assertEquals("Remove: check size is correct ", 2, list1.size());
-		
+
 		// TODO: Add more tests here
 	}
 	
@@ -138,7 +138,7 @@ public class MyLinkedListTester {
             fail("AddEnd: Check null");
         }
         catch (NullPointerException e) {
-            
+
         }
 	}
 
@@ -174,16 +174,16 @@ public class MyLinkedListTester {
             fail("AddEnd: Check null");
         }
         catch (NullPointerException e) {
-            
+
         }
-        
+
         try {
             emptyList.add(10);
         }
         catch (IndexOutOfBoundsException e) {
-            
+
         }
-		
+
 	}
 	
 	/** Test setting an element in the list */
