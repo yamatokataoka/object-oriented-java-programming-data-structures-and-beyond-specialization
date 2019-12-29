@@ -114,7 +114,13 @@ public class MyLinkedListTester {
 		assertEquals("Remove: check element 0 is correct ", (Integer)21, list1.get(0));
 		assertEquals("Remove: check size is correct ", 2, list1.size());
 
-		// TODO: Add more tests here
+		try {
+            emptyList.remove(2);
+            fail("Remove: check IndexOutOfBoundsException");
+        }
+        catch (IndexOutOfBoundsException e) {
+
+        }
 	}
 	
 	/** Test adding an element into the end of the list, specifically
