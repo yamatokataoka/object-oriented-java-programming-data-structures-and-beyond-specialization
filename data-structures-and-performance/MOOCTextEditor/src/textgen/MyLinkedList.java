@@ -70,7 +70,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
             throw new NullPointerException();
         }
 
-	    if (index >= size || index < 0) {
+	    if (index > size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
 
