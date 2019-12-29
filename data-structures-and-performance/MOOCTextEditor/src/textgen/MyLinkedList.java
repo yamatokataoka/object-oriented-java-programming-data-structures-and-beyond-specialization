@@ -64,6 +64,8 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 */
 	public void add(int index, E element ) 
 	{
+	    LLNode<E> current = head;
+
 	    if (element == null) {
             throw new NullPointerException();
         }
@@ -71,6 +73,12 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	    if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
+
+        for (int k=0; k<=index; k++) {
+            current = current.next;
+        }
+
+        new LLNode<E>(element, current);
 
         size++;
 	}
