@@ -160,11 +160,11 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddAtIndex()
 	{
-	    list1.add(99, 1);
+	    list1.add(1, 99);
         assertEquals("AddEnd: check element 1 is correct ", (Integer)99, list1.get(1));
         assertEquals("AddEnd: check size is correct ", 4, list1.size());
 
-        emptyList.add(2, 0);
+        emptyList.add(0, 2);
         assertEquals("AddEnd: check element 0 is correct ", (Integer)2, emptyList.get(0));
         assertEquals("AddEnd: check size is correct ", (int)1, emptyList.size());
 
@@ -177,7 +177,7 @@ public class MyLinkedListTester {
         }
 
         try {
-            emptyList.add(2,10);
+            emptyList.add(10, 2);
             fail("testAddAtIndex: check IndexOutOfBoundsException");
         }
         catch (IndexOutOfBoundsException e) {
