@@ -159,7 +159,30 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddAtIndex()
 	{
-        // TODO: implement this test
+	    boolean a = list1.add(99, 1);
+        assertEquals("AddEnd: check a is correct ", true, a);
+        assertEquals("AddEnd: check element 1 is correct ", (Integer)99, list1.get(1));
+        assertEquals("AddEnd: check size is correct ", 4, list1.size());
+
+        a = emptyList.add(2);
+        assertEquals("AddEnd: check a is correct ", true, a);
+        assertEquals("AddEnd: check element 0 is correct ", (Integer)2, list1.get(0));
+        assertEquals("AddEnd: check size is correct ", 1, list1.size());
+
+        try {
+            list1.add(null);
+            fail("AddEnd: Check null");
+        }
+        catch (NullPointerException e) {
+            
+        }
+        
+        try {
+            emptyList.add(10);
+        }
+        catch (IndexOutOfBoundsException e) {
+            
+        }
 		
 	}
 	
