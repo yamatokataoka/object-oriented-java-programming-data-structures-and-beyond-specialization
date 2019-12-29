@@ -130,8 +130,8 @@ public class MyLinkedListTester {
 
         a = emptyList.add(2);
         assertEquals("AddEnd: check a is correct ", true, a);
-        assertEquals("AddEnd: check element 0 is correct ", (Integer)2, list1.get(0));
-        assertEquals("AddEnd: check size is correct ", 1, list1.size());
+        assertEquals("AddEnd: check element 0 is correct ", (Integer)2, emptyList.get(0));
+        assertEquals("AddEnd: check size is correct ", 1, emptyList.size());
 
         try {
             list1.add(null);
