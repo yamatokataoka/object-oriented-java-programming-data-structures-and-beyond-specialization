@@ -45,6 +45,8 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 			prevWord = w;
 		}
 
+		prevWord = textArray[textArray.length-1];
+		addNextWord (wordList, prevWord, starter);
 	}
 	
 	/** 
