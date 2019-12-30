@@ -72,13 +72,14 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	public String generateText(int numWords) {
 		String currWord = starter;
 		String output = "";
-		output += currWord;
 
-		if (wordList.isEmpty()) {
+		if (wordList.isEmpty() || numWords == 0) {
 			return output;
 		}
 
-		for (int k=0; k<numWords; k++) {
+		output += currWord;
+
+		for (int k=0; k<numWords-1; k++) {
 			ListNode node = findNode(wordList, currWord);
 			String w = node.getRandomNextWord(rnGenerator);
 			output += " " + w;
