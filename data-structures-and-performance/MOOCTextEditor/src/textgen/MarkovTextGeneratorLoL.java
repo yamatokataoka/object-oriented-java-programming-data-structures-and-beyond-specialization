@@ -81,9 +81,10 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		for (int k=0; k<numWords; k++) {
 			ListNode node = findNode(wordList, currWord);
 			String w = node.getRandomNextWord(rnGenerator);
-			output += " " + currWord;
+			output += " " + w;
 			currWord = w;
 		}
+
 		return output;
 	}
 	
