@@ -40,28 +40,11 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		for (int k=1; k<textArray.length; k++) {
 			String w = textArray[k];
 
-			index = -1;
-
-			for (int j=0; j<wordList.size(); j++) {
-				ListNode node = wordList.get(j);
-				if (node.getWord().equals(prevWord)) {
-					index = j;
-					break;
-				}
-			}
-
-			if (index >= 0) {
-				wordList.get(index).addNextWord(w);
-			} else {
-				ListNode node = new ListNode(prevWord);
-				node.addNextWord(w);
-				wordList.add(node);
-			}
+			addNextWord (wordList, prevWord, w);
 
 			prevWord = w;
 		}
 
-		wordList.get(wordList.size()-1).addNextWord(starter);
 	}
 	
 	/** 
@@ -93,7 +76,26 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		// TODO: Implement this method.
 	}
 	
-	// TODO: Add any private helper methods you need here.
+	// helper method for training generator
+	private void addNextWord (List<ListNode> wordList, String prevWord, String w) {
+		int index = -1;
+
+		for (int j=0; j<wordList.size(); j++) {
+			ListNode node = wordList.get(j);
+			if (node.getWord().equals(prevWord)) {
+				index = j;
+				break;
+			}
+		}
+
+		if (index >= 0) {
+			wordList.get(index).addNextWord(w);
+		} else {
+			ListNode node = new ListNode(prevWord);
+			node.addNextWord(w);
+			wordList.add(node);
+		}
+	}
 	
 	
 	/**
