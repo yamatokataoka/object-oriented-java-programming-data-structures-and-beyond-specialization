@@ -36,17 +36,33 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 		starter = textArray[0];
 		String prevWord = starter;
 		int index;
+		ListNode node;
 
 		for (int k=1; k<textArray.length; k++) {
 			String w = textArray[k];
 
-			addNextWord (wordList, prevWord, w);
+			node = findNode(wordList, prevWord);
+
+			if (node != null) {
+				node.addNextWord(w);
+			} else {
+				ListNode newNode = new ListNode(prevWord);
+				newNode.addNextWord(w);
+				wordList.add(newNode);
+			}
 
 			prevWord = w;
 		}
 
 		prevWord = textArray[textArray.length-1];
-		addNextWord (wordList, prevWord, starter);
+		node = findNode(wordList, prevWord);
+		if (node != null) {
+			node.addNextWord(starter);
+		} else {
+			ListNode newNode = new ListNode(prevWord);
+			newNode.addNextWord(starter);
+			wordList.add(newNode);
+		}
 	}
 	
 	/** 
@@ -79,24 +95,23 @@ public class MarkovTextGeneratorLoL implements MarkovTextGenerator {
 	}
 	
 	// helper method for training generator
-	private void addNextWord (List<ListNode> wordList, String prevWord, String w) {
+	private ListNode findNode (List<ListNode> wordList, String word) {
 		int index = -1;
+		ListNode node = null;
 
 		for (int j=0; j<wordList.size(); j++) {
-			ListNode node = wordList.get(j);
-			if (node.getWord().equals(prevWord)) {
+			ListNode current = wordList.get(j);
+			if (current.getWord().equals(word)) {
 				index = j;
 				break;
 			}
 		}
 
 		if (index >= 0) {
-			wordList.get(index).addNextWord(w);
-		} else {
-			ListNode node = new ListNode(prevWord);
-			node.addNextWord(w);
-			wordList.add(node);
+			node = wordList.get(index);
 		}
+
+		return node;
 	}
 	
 	
