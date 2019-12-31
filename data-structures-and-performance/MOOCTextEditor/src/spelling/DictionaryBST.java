@@ -8,11 +8,11 @@ import java.util.TreeSet;
  */
 public class DictionaryBST implements Dictionary 
 {
-   private TreeSet<String> dict;
+	private TreeSet<String> dict;
 	
-    // TODO: Implement the dictionary interface using a TreeSet.  
- 	// You'll need a constructor here
-	
+    public DictionaryBST () {
+    	dict = new TreeSet<String>();
+    }
     
     /** Add this word to the dictionary.  Convert it to lowercase first
      * for the assignment requirements.
