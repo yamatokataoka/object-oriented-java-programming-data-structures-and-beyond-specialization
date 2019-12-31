@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 /** 
  * An trie data structure that implements the Dictionary and the AutoComplete ADT
- * @author You
+ * @author yamatokataoka
  *
  */
 public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
