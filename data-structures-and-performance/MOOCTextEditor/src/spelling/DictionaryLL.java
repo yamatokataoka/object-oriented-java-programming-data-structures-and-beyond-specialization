@@ -35,8 +35,7 @@ public class DictionaryLL implements Dictionary
     /** Return the number of words in the dictionary */
     public int size()
     {
-        // TODO: Implement this method
-        return 0;
+        return dict.size();
     }
 
     /** Is this a word according to this dictionary? */
