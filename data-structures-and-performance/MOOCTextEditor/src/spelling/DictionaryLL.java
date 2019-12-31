@@ -11,7 +11,6 @@ public class DictionaryLL implements Dictionary
 
 	private LinkedList<String> dict;
 	
-    // TODO: Add a constructor
 	public DictionaryLL () {
 		dict = new LinkedList<String>();
 	}
