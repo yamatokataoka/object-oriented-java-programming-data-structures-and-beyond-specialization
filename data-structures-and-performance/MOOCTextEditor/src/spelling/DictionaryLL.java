@@ -22,8 +22,8 @@ public class DictionaryLL implements Dictionary
      * (it wasn't already there). */
     public boolean addWord(String word) {
     	String wordLow = word.toLowerCase();
-    	if (!dict.contains(word)) {
-    		dict.add(word);
+    	if (!dict.contains(wordLow)) {
+    		dict.add(wordLow);
     		return true;
     	}
 
@@ -40,7 +40,7 @@ public class DictionaryLL implements Dictionary
     /** Is this a word according to this dictionary? */
     public boolean isWord(String s) {
     	String sLow = s.toLowerCase();
-    	return dict.contains(s);
+    	return dict.contains(sLow);
     }
 
     
