@@ -39,19 +39,26 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	 */
 	public boolean addWord(String word)
 	{
-	    char[] wordLowChars = word.toLowerCase().toCharArray();
+		char[] wordLowChars = word.toLowerCase().toCharArray();
 		TrieNode current = root;
-		boolean addNew = false;
+		boolean output = false;
 
-	    for (char c : wordLowChars) {
-	    	TrieNode newNode = current.insert(c);
-	    	addNew = false;
+	    for (int k=0; k<wordLowChars.length; k++) {
+	    	TrieNode newNode = current.insert(wordLowChars[k]);
+
 	    	if (newNode == null) {
-	    		current = current.getChild(c);
-	    		addNew = true;
+	    		current = current.getChild(wordLowChars[k]);
+	    	} else {
+	    		current = newNode;
+	    	}
+	    	
+	    	if (k == wordLowChars.length-1 && !current.endsWord()) {
+	    		current.setEndsWord(true);
+	    		size++;
+	    		output = true;
 	    	}
 	    }
-	    return addNew;
+	    return output;
 	}
 	
 	/** 
