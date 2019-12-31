@@ -1,4 +1,4 @@
-package spelling;
+	package spelling;
 
 
 /** A class for timing the Dictionary Implementations
