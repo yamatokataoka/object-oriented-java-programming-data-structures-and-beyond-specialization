@@ -136,12 +136,13 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
     	 completions = new LinkedList();
     	 while (queue.size() != 0 && completions.size() < numCompletions) {
     		 TrieNode node = queue.remove();
-    		 if (node.endsWord()) {
-    			 completions.add("node " + node.getText());
+    		 if (node.endsWord() && !completions.contains(node.getText())) {
+    			 completions.add(node.getText());
     		 }
     		 for (Character c : current.getValidNextCharacters()) {
     			 queue.add(current.getChild(c));
     		 }
+    		 current = node;
     	 }
     	 
          return completions;
