@@ -91,6 +91,9 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	    	}
 	    }
 
+		if (!current.endsWord()) {
+			return false;
+		}
 		return true;
 	}
 
