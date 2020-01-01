@@ -117,22 +117,34 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
      */@Override
      public List<String> predictCompletions(String prefix, int numCompletions) 
      {
-    	 // TODO: Implement this method
-    	 // This method should implement the following algorithm:
-    	 // 1. Find the stem in the trie.  If the stem does not appear in the trie, return an
-    	 //    empty list
-    	 // 2. Once the stem is found, perform a breadth first search to generate completions
-    	 //    using the following algorithm:
-    	 //    Create a queue (LinkedList) and add the node that completes the stem to the back
-    	 //       of the list.
-    	 //    Create a list of completions to return (initially empty)
-    	 //    While the queue is not empty and you don't have enough completions:
-    	 //       remove the first Node from the queue
-    	 //       If it is a word, add it to the completions list
-    	 //       Add all of its child nodes to the back of the queue
-    	 // Return the list of completions
+    	 char[] stringLowChars = prefix.toLowerCase().toCharArray();
+    	 TrieNode current = root;
+    	 LinkedList<String> completions;
+
+    	 for (int k=0; k<stringLowChars.length; k++) {
+  	    	if (current.getValidNextCharacters().contains(stringLowChars[k])) {
+  	    		current = current.getChild(stringLowChars[k]);
+  	    	} else {
+  	    		completions = new LinkedList<String>();
+  	    		return completions;
+  	    	}
+  	     }
+
+    	 LinkedList<TrieNode> queue = new LinkedList<TrieNode>();
+    	 queue.add(current);
+
+    	 completions = new LinkedList();
+    	 while (queue.size() != 0 && completions.size() < numCompletions) {
+    		 TrieNode node = queue.remove();
+    		 if (node.endsWord()) {
+    			 completions.add("node " + node.getText());
+    		 }
+    		 for (Character c : current.getValidNextCharacters()) {
+    			 queue.add(current.getChild(c));
+    		 }
+    	 }
     	 
-         return null;
+         return completions;
      }
 
  	// For debugging
