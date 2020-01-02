@@ -53,7 +53,7 @@ public class WPTree implements WordPath {
 
 		visited.add(word1);
 
-		while (queue.size() != 0 && retList.size() == 0) {
+		while (queue.size() != 0 && retList == null) {
 			WPTreeNode curr = ((LinkedList<WPTreeNode>) queue).remove();
 			List<String> neighbors = nw.distanceOne(curr.getWord(), false);
 			for (String n : neighbors) {
