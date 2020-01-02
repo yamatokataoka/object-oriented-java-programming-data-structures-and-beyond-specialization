@@ -88,6 +88,13 @@ public class WPTree implements WordPath {
 		List<String> l = wptree.findPath(word1, word2);
 		System.out.println("Path for \""+word1+" "+word2+"\" are:");
 		System.out.println(l+"\n");
+
+		word1 = "time";
+		word2 = "no_word_on_dict";
+		wptree = new WPTree();
+		l = wptree.findPath(word1, word2);
+		System.out.println("Path for \""+word1+" "+word2+"\" are:");
+		System.out.println(l+"\n");
     }
 }
 
