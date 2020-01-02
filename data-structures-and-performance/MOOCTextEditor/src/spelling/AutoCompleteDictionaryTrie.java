@@ -46,6 +46,7 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	    for (int k=0; k<wordLowChars.length; k++) {
 	    	TrieNode newNode = current.insert(wordLowChars[k]);
 
+	    	// if inserted successfully
 	    	if (newNode == null) {
 	    		current = current.getChild(wordLowChars[k]);
 	    	} else {
@@ -79,10 +80,6 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 		char[] stringLowChars = s.toLowerCase().toCharArray();
 		TrieNode current = root;
 
-		if (stringLowChars.length == 0) {
-			return false;
-		}
-
 		for (int k=0; k<stringLowChars.length; k++) {
 	    	if (current.getValidNextCharacters().contains(stringLowChars[k])) {
 	    		current = current.getChild(stringLowChars[k]);
@@ -91,7 +88,7 @@ public class AutoCompleteDictionaryTrie implements  Dictionary, AutoComplete {
 	    	}
 	    }
 
-		if (!current.endsWord()) {
+		if (!current.endsWord() || stringLowChars.length == 0) {
 			return false;
 		}
 		return true;
