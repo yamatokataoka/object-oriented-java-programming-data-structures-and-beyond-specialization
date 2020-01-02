@@ -81,6 +81,14 @@ public class WPTree implements WordPath {
 		return ret;
 	}
 	
+	public static void main(String[] args) {
+		String word1 = "time";
+		String word2 = "theme";
+		WPTree wptree = new WPTree();
+		List<String> l = wptree.findPath(word1, word2);
+		System.out.println("Path for \""+word1+" "+word2+"\" are:");
+		System.out.println(l+"\n");
+    }
 }
 
 /* Tree Node in a WordPath Tree. This is a standard tree with each
