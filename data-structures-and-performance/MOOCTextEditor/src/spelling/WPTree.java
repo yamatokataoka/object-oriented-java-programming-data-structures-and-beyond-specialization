@@ -40,30 +40,30 @@ public class WPTree implements WordPath {
 	// see method description in WordPath interface
 	public List<String> findPath(String word1, String word2) 
 	{
-	    // TODO: Implement this method.
-//		Input:  The first word
-//		Input:  The second word
-//		Output: list of Strings which are the path from word1 to word2 including word1 and word2
-//
-//		Create a queue to hold words to explore
-//		Create a visited set to avoid looking at the same String repeatedly
-//		Create list of words which are the path to return when finished
-//		Create WPTreeNode of root and set the first word to root in this WPTree
-//
-//		Add the initial word to the queue and visited 
-//
-//		while the queue has elements and we need more to explore the path
-//		  remove the word from the start of the queue and assign to curr
-//		  get a list of neighbors (strings one mutation away from curr)
-//		  for each n in the list of neighbors
-//		     if n is not visited
-//		       add n to the visited set
-//		       add n to the back of the queue
-//		       add n as a child of curr
-//		       if n is The second word
-//		          set the path from The first word to the list of the path
-//
-//		return the list of the path
+		List<WPTreeNode> queue = new LinkedList<WPTreeNode>();
+		HashSet<String> visited = new HashSet<String>();
+		List<String> retList = new LinkedList<String>();
+
+		root = new WPTreeNode(word1, null);
+		queue.add(root);
+
+		visited.add(word1);
+
+		while (queue.size() != 0 && retList.size() == 0) {
+			WPTreeNode curr = ((LinkedList<WPTreeNode>) queue).remove();
+			List<String> neighbors = nw.distanceOne(curr.getWord(), false);
+			for (String n : neighbors) {
+				if (!visited.contains(n)) {
+					visited.add(n);
+					if (n.equals(word2)) {
+						retList = curr.addChild(n).buildPathToRoot();
+					} else {
+						queue.add(curr.addChild(n));
+					}
+				}
+			}
+		}
+		return retList;
 	}
 	
 	// Method to print a list of WPTreeNodes (useful for debugging)
