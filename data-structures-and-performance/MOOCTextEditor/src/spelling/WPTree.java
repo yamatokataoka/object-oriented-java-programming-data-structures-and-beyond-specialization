@@ -44,7 +44,7 @@ public class WPTree implements WordPath {
 		HashSet<String> visited = new HashSet<String>();
 		List<String> retList = new LinkedList<String>();
 
-		if (nw.dict.isWord(word2)) {
+		if (!nw.dict.isWord(word2)) {
 			return retList;
 		}
 
